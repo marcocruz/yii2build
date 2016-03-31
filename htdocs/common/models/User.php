@@ -11,7 +11,7 @@ use yii\helpers\Security;
 /**
  * User model
  *
- * @property integer $id
+ * @property integer $user_id
  * @property string $username
  * @property string $password_hash
  * @property string $password_reset_token
@@ -83,9 +83,9 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @findIdentity
      */
-    public static function findIdentity($id)
+    public static function findIdentity($user_id)
     {
-        return static::findOne(['id' => $id, 'status_id' => self::STATUS_ACTIVE]);
+        return static::findOne(['user_id' => $user_id, 'status_id' => self::STATUS_ACTIVE]);
     }
 
     /**
@@ -208,5 +208,10 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+    
+    public function getProfile() {
+        return $this->hasOne(Profile::className(), ['user_id' => 'user_id']);
+        
     }
 } 
