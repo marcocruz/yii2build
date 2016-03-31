@@ -18,8 +18,8 @@ use yii\helpers\Security;
  * @property string $email
  * @property string $auth_key
  * @property integer $rol_id
- * @property integer $estado_id
- * @property integer $tipo_usuario_id
+ * @property integer $status_id
+ * @property integer $type_user_id
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
